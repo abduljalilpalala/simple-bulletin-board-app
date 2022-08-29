@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
 
   return (
     <AppBar component="nav" position="sticky" elevation={1}>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" disableGutters>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <DrawerToggleButton handleDrawerToggle={handleDrawerToggle} />
           <AppNameNavItem />
