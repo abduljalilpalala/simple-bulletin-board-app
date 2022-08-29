@@ -14,7 +14,7 @@ type Props = {
   articles: Article[]
 }
 
-const ArticleList = ({ articles }: Props) => {
+const ArticleList = ({ articles }: Props): JSX.Element => {
   return (
     <Grid container item spacing={4} sx={{ py: 4 }}>
       {articles.map((article, idx) => (
