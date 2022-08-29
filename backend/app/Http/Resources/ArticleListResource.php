@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ArticleListResource extends JsonResource
@@ -14,6 +15,11 @@ class ArticleListResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+          'id' => $this->id,
+          'title' => $this->title,
+          'content' => Str::of($this->content)->words(20),
+          'date' => $this->created_at
+        ];
     }
 }

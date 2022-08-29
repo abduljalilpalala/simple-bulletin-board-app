@@ -3,4 +3,9 @@ export type NavItem = {
   path: string
 }
 
-export type Article = number
+export type Article = {
+  id: number
+  title: string
+  content: string
+  date: string
+}
