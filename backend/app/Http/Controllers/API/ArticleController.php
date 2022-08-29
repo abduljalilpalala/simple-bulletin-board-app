@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Http\Resources\ArticleListResource;
 
 class ArticleController extends Controller
 {
   public function index()
   {
-    //
+    return ArticleListResource::collection(Article::all());
   }
 
   public function store(StoreArticleRequest $request)
