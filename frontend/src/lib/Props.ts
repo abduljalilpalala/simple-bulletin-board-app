@@ -4,8 +4,8 @@ export type NavItem = {
 }
 
 export type Article = {
-  id: number
+  id?: number
   title: string
   content: string
-  date: string
+  date?: string
 }
