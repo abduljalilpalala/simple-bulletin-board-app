@@ -16,6 +16,7 @@ import Layout from '../../../layouts/BulletinBoardLayout'
 import { schema } from '../../../lib/schema'
 import { Article } from '../../../lib/Props'
 import FormInput from '../../../components/FormInput'
+import { useArticles } from '../../../hooks/articles'
 
 const Paper = styled(MuiPaper)({
   display: 'flex',
@@ -29,13 +30,17 @@ const CreateArticle: React.FC = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Article>({
     resolver: yupResolver(schema),
   })
 
+  const { createArticle, loading, setLoading } = useArticles()
+
   const onSubmit = (data: Article): void => {
-    // TODO: Functionality will be in another task
+    setLoading(true)
+    createArticle(data, setError)
   }
 
   return (
@@ -57,6 +62,7 @@ const CreateArticle: React.FC = () => {
                   autoFocus
                   required
                   fullWidth
+                  disabled={loading}
                   errors={errors?.title}
                   register={{ ...register('title') }}
                 />
@@ -67,6 +73,7 @@ const CreateArticle: React.FC = () => {
                   fullWidth
                   multiline
                   rows={4}
+                  disabled={loading}
                   errors={errors?.content}
                   register={{ ...register('content') }}
                 />
@@ -75,7 +82,11 @@ const CreateArticle: React.FC = () => {
             <Divider />
             <Grid container justifyContent="flex-end">
               <Box pt={2} pr={2}>
-                <LoadingButton type="submit" variant="contained">
+                <LoadingButton
+                  type="submit"
+                  loading={loading}
+                  variant="contained"
+                >
                   Submit
                 </LoadingButton>
               </Box>
