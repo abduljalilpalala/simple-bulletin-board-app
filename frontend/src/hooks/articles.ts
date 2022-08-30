@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import axios from '../lib/axios'
 import { Article } from '../lib/Props'
 
-export const useArticles = () => {
+export const useFetchArticles = () => {
   const fetcher = async (url: string): Promise<Article[]> =>
     await axios(url).then((res: AxiosResponse) => res.data)
 

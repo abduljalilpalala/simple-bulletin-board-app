@@ -20,7 +20,7 @@ const Article: React.FC<Props> = ({
   article: { id, title, content, date },
 }) => {
   return (
-    <Grid item key={id} xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={4}>
       <Card
         sx={{
           height: '100%',

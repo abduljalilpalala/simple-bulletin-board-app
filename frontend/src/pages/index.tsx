@@ -6,10 +6,10 @@ import Layout from '../layouts/BulletinBoardLayout'
 import EmptyList from '../components/ArticleList/EmptyList'
 import Loading from '../components/ArticleList/Loading'
 import ArticleList from '../components/ArticleList/ArticleList'
-import { useArticles } from '../hooks/articles'
+import { useFetchArticles } from '../hooks/articles'
 
 const Articles: NextPage = () => {
-  const { articles, isLoading } = useArticles()
+  const { articles, isLoading } = useFetchArticles()
 
   return (
     <Layout metaTitle="Articles">
@@ -19,7 +19,7 @@ const Articles: NextPage = () => {
             Articles
           </Typography>
           <Button variant="contained" size="small">
-            <NextLink href="articles/create">Create Article</NextLink>
+            <NextLink href="article/create">Create Article</NextLink>
           </Button>
         </Grid>
         <Divider sx={{ mt: 1 }} />
