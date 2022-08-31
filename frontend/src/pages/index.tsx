@@ -6,10 +6,10 @@ import Layout from '../layouts/BulletinBoardLayout'
 import EmptyList from '../components/ArticleList/EmptyList'
 import Loading from '../components/ArticleList/Loading'
 import ArticleList from '../components/ArticleList/ArticleList'
-import { useFetchArticles } from '../hooks/fetchArticles'
+import { useFetch } from '../hooks/fetch'
 
 const Articles: NextPage = () => {
-  const { articles, isLoading, isValidating } = useFetchArticles()
+  const { articles, isLoading, isValidating } = useFetch('/api/article')
 
   return (
     <Layout metaTitle="Articles">

@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios'
 import useSWR from 'swr'
 
-import axios from '../lib/axios'
-import { Article } from '../lib/Props'
+import axios from '@/lib/axios'
+import { Article } from '@/lib/Props'
 
-export const useFetchArticles = () => {
-  const fetcher = async (url: string): Promise<Article[]> =>
+export const useFetch = (url: string | null) => {
+  const fetcher = async (url: string): Promise<any> =>
     await axios(url).then((res: AxiosResponse) => res.data)
 
   const options = {
@@ -15,11 +15,11 @@ export const useFetchArticles = () => {
     revalidateOnMount: true,
   }
 
-  const { data, error, isValidating } = useSWR('/api/article', fetcher, options)
+  const { data, error, isValidating } = useSWR(url, fetcher, options)
 
   return {
     articles: data,
     isLoading: !error && !data,
-    isValidating
+    isValidating,
   }
 }
