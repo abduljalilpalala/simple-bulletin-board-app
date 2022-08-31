@@ -1,9 +1,9 @@
 import { useState } from 'react'
+import { AxiosResponse } from 'axios'
+import { mutate } from 'swr'
 
 import axios from '@/lib/axios'
 import { Toast } from '@/utils/GeneralFunctions'
-import { AxiosResponse } from 'axios'
-import { mutate } from 'swr'
 
 export const useVotes = () => {
   const [loading, setLoading] = useState<boolean>(false)
