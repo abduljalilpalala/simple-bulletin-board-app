@@ -11,8 +11,9 @@ import {
 } from '@mui/material'
 import React, { MouseEventHandler } from 'react'
 
-import { navItems, NavItem } from './NavItems'
-import { APP_NAME } from '../../lib/Constants'
+import { navItems } from './NavItems'
+import { NavItem } from '@/lib/Props'
+import { APP_NAME } from '@/lib/Constants'
 
 const DRAWER_WIDTH: number = 240
 

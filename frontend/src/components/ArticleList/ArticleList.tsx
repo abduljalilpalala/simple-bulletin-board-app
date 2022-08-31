@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 
-import { Article as TArticle } from '../../lib/Props'
-import Article from '../Article'
+import { Article as TArticle } from '@/lib/Props'
+import Article from '@/components/Article'
 
 type Props = {
   articles: TArticle[] | undefined

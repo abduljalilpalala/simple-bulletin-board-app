@@ -2,11 +2,11 @@ import { Button, Container, Divider, Grid, Typography } from '@mui/material'
 import { NextPage } from 'next'
 import NextLink from 'next/link'
 
-import Layout from '../layouts/BulletinBoardLayout'
-import EmptyList from '../components/ArticleList/EmptyList'
-import Loading from '../components/ArticleList/Loading'
-import ArticleList from '../components/ArticleList/ArticleList'
-import { useFetch } from '../hooks/fetch'
+import Layout from '@/layouts/BulletinBoardLayout'
+import EmptyList from '@/components/ArticleList/EmptyList'
+import Loading from '@/components/ArticleList/Loading'
+import ArticleList from '@/components/ArticleList/ArticleList'
+import { useFetch } from '@/hooks/fetch'
 
 const Articles: NextPage = () => {
   const { articles, isLoading, isValidating } = useFetch('/api/article')

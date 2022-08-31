@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
 import React from 'react'
 
-import { APP_NAME } from '../../lib/Constants'
+import { APP_NAME } from '@/lib/Constants'
 
 const AppNameNavItem: React.FC = () => {
   return (
