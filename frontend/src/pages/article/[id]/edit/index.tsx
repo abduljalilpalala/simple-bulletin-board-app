@@ -70,7 +70,7 @@ const EditArticle: React.FC = () => {
   }
 
   return (
-    <Layout metaTitle="Create Article">
+    <Layout metaTitle="Edit Article">
       <Container maxWidth="sm">
         <Paper elevation={1}>
           <Grid container>
