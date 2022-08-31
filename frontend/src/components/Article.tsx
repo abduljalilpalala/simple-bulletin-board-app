@@ -9,8 +9,11 @@ import {
 } from '@mui/material'
 import moment from 'moment'
 import NextLink from 'next/link'
+import { LoadingButton } from '@mui/lab'
 
-import { Article as TArticle } from '../lib/Props'
+import { Article as TArticle } from '@/lib/Props'
+import { useArticles } from '@/hooks/articles'
+import { MouseEventHandler } from 'react'
 
 type Props = {
   article: TArticle
@@ -19,6 +22,13 @@ type Props = {
 const Article: React.FC<Props> = ({
   article: { id, title, content, date },
 }) => {
+  const { deleteArticle, loading, setLoading } = useArticles()
+
+  const onDelete: MouseEventHandler<HTMLButtonElement> = () => {
+    setLoading(true)
+    deleteArticle(id as number)
+  }
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card
@@ -52,9 +62,14 @@ const Article: React.FC<Props> = ({
                 Edit
               </Button>
             </NextLink>
-            <Button variant="contained" size="small">
+            <LoadingButton
+              variant="contained"
+              size="small"
+              loading={loading}
+              onClick={onDelete}
+            >
               Delete
-            </Button>
+            </LoadingButton>
           </Grid>
         </CardActions>
       </Card>
