@@ -3,7 +3,7 @@ import Head from 'next/head'
 import React, { ReactNode } from 'react'
 
 import NavBar from './NavBar'
-import { APP_NAME } from '../lib/Constants'
+import { APP_NAME } from '@/lib/Constants'
 import Footer from './Footer'
 
 type Props = {

@@ -12,11 +12,11 @@ import { LoadingButton } from '@mui/lab'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import Layout from '../../../layouts/BulletinBoardLayout'
-import { schema } from '../../../lib/schema'
-import { Article } from '../../../lib/Props'
-import FormInput from '../../../components/FormInput'
-import { useArticles } from '../../../hooks/articles'
+import Layout from '@/layouts/BulletinBoardLayout'
+import { schema } from '@/lib/schema'
+import { Article } from '@/lib/Props'
+import FormInput from '@/components/FormInput'
+import { useArticles } from '@/hooks/articles'
 
 const Paper = styled(MuiPaper)({
   display: 'flex',

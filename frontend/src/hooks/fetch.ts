@@ -2,7 +2,6 @@ import { AxiosResponse } from 'axios'
 import useSWR from 'swr'
 
 import axios from '@/lib/axios'
-import { Article } from '@/lib/Props'
 
 export const useFetch = (url: string | null) => {
   const fetcher = async (url: string): Promise<any> =>
