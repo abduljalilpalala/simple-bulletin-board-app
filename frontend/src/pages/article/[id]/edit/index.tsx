@@ -19,6 +19,7 @@ import { useFetch } from '@/hooks/fetch'
 import Layout from '@/layouts/BulletinBoardLayout'
 import FormInput from '@/components/FormInput'
 import Loading from '@/components/ArticleList/Loading'
+import { useArticles } from '@/hooks/articles'
 
 const Paper = styled(MuiPaper)({
   display: 'flex',
@@ -33,20 +34,22 @@ const EditArticle: React.FC = () => {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors },
   } = useForm<Article>({
     resolver: yupResolver(schema),
   })
 
   const router: NextRouter = useRouter()
-  const [id, setId] = useState<string | undefined>()
+  const [id, setId] = useState<number>(0)
 
   const { articles, isLoading } = useFetch(id ? `/api/article/${id}` : null)
+  const { editArticle, loading, setLoading } = useArticles()
 
   useEffect(() => {
     if (router.isReady) {
       const { id } = router.query
-      setId(id as string)
+      setId(parseInt(id as string))
     }
   }, [router.isReady])
 
@@ -61,7 +64,9 @@ const EditArticle: React.FC = () => {
   }, [articles])
 
   const onSubmit = (data: Article): void => {
-    // TODO: Will be adding functionality in another task
+    setLoading(true)
+    data.id = id
+    editArticle(data, setError)
   }
 
   return (
@@ -87,7 +92,7 @@ const EditArticle: React.FC = () => {
                       autoFocus
                       required
                       fullWidth
-                      disabled={false}
+                      disabled={loading}
                       errors={errors?.title}
                       register={{ ...register('title') }}
                     />
@@ -98,7 +103,7 @@ const EditArticle: React.FC = () => {
                       fullWidth
                       multiline
                       rows={10}
-                      disabled={false}
+                      disabled={loading}
                       errors={errors?.content}
                       register={{ ...register('content') }}
                     />
@@ -109,7 +114,7 @@ const EditArticle: React.FC = () => {
                   <Box pt={2} pr={2}>
                     <LoadingButton
                       type="submit"
-                      loading={false}
+                      loading={loading}
                       variant="contained"
                     >
                       Submit
