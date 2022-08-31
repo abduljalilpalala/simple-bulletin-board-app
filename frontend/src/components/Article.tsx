@@ -29,9 +29,15 @@ const Article: React.FC<Props> = ({
         }}
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          <Link component="button" variant="h5" sx={{ textDecoration: 'none' }}>
-            <NextLink href={`articles/${id}`}>{title}</NextLink>
-          </Link>
+          <NextLink href={`article/${id}`}>
+            <Link
+              component="button"
+              variant="h5"
+              sx={{ textDecoration: 'none' }}
+            >
+              {title}
+            </Link>
+          </NextLink>
           <Typography variant="subtitle1" color="text.secondary" gutterBottom>
             {moment(date).format('LL')}
           </Typography>
@@ -41,9 +47,11 @@ const Article: React.FC<Props> = ({
         </CardContent>
         <CardActions>
           <Grid container justifyContent="flex-end" gap={1}>
-            <Button variant="contained" size="small">
-              <NextLink href={`articles/${id}/edit`}>Edit</NextLink>
-            </Button>
+            <NextLink href={`article/${id}/edit`}>
+              <Button variant="contained" size="small">
+                Edit
+              </Button>
+            </NextLink>
             <Button variant="contained" size="small">
               Delete
             </Button>
