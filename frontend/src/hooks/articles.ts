@@ -6,6 +6,7 @@ import axios from '@/lib/axios'
 import { Toast } from '@/utils/GeneralFunctions'
 import { Article, Fields } from '@/lib/Props'
 import { AxiosResponse } from 'axios'
+import { mutate } from 'swr'
 
 export const useArticles = () => {
   const navigate = useRouter()
@@ -53,6 +54,26 @@ export const useArticles = () => {
     }
   }
 
+  const deleteArticle = async (articleId: number): Promise<void> => {
+    try {
+      setLoading(true)
+      const response: AxiosResponse<any, any> = await axios.delete(
+        `/api/article/${articleId}`
+      )
+      if (response.status === 204) {
+        Toast('Successfully Deleted an Article', 'success')
+        mutate('/api/article')
+      }
+    } catch (error: any) {
+      if (error.response.status !== 422) {
+        Toast(error.message, 'error')
+        throw error
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const catchErrors = (error: any, setError: UseFormSetError<Article>) => {
     if (error.response.status !== 422) {
       Toast(error.message, 'error')
@@ -67,6 +88,7 @@ export const useArticles = () => {
   return {
     createArticle,
     editArticle,
+    deleteArticle,
     loading,
     setLoading,
   }

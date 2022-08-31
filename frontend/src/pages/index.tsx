@@ -18,9 +18,11 @@ const Articles: NextPage = () => {
           <Typography component="h2" variant="h5">
             Articles
           </Typography>
-          <Button variant="contained" size="small">
-            <NextLink href="article/create">Create Article</NextLink>
-          </Button>
+          <NextLink href="article/create">
+            <Button variant="contained" size="small">
+              Create Article
+            </Button>
+          </NextLink>
         </Grid>
         <Divider sx={{ mt: 1 }} />
         {isLoading || isValidating ? (
