@@ -22,11 +22,10 @@ type Props = {
 const Article: React.FC<Props> = ({
   article: { id, title, content, date },
 }) => {
-  const { deleteArticle, loading, setLoading } = useArticles()
+  const { confirmDeleteArticle, loading } = useArticles()
 
   const onDelete: MouseEventHandler<HTMLButtonElement> = () => {
-    setLoading(true)
-    deleteArticle(id as number)
+    confirmDeleteArticle(id as number)
   }
 
   return (

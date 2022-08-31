@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { UseFormSetError } from 'react-hook-form'
 import { AxiosResponse } from 'axios'
 import { mutate } from 'swr'
+import Swal from 'sweetalert2'
 
 import axios from '@/lib/axios'
 import { Toast } from '@/utils/GeneralFunctions'
@@ -17,7 +18,6 @@ export const useArticles = () => {
     setError: UseFormSetError<Article>
   ): Promise<void> => {
     try {
-      setLoading(true)
       const response: AxiosResponse<any, any> = await axios.post(
         '/api/article',
         article
@@ -38,7 +38,6 @@ export const useArticles = () => {
     setError: UseFormSetError<Article>
   ): Promise<void> => {
     try {
-      setLoading(true)
       const response: AxiosResponse<any, any> = await axios.put(
         `/api/article/${article.id}`,
         article
@@ -74,6 +73,22 @@ export const useArticles = () => {
     }
   }
 
+  const confirmDeleteArticle = (articleId: number): void => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete this article?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteArticle(articleId)
+      }
+    })
+  }
+
   const catchErrors = (error: any, setError: UseFormSetError<Article>) => {
     if (error.response.status !== 422) {
       Toast(error.message, 'error')
@@ -88,7 +103,7 @@ export const useArticles = () => {
   return {
     createArticle,
     editArticle,
-    deleteArticle,
+    confirmDeleteArticle,
     loading,
     setLoading,
   }
