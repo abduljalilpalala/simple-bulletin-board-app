@@ -26,7 +26,7 @@ const Paper = styled(MuiPaper)({
 
 const ArticleDetail: React.FC = () => {
   const router: NextRouter = useRouter()
-  
+
   const [id, setId] = useState<number>(0)
   const { articles, isLoading } = useFetch(id ? `/api/article/${id}` : null)
   const { title, content, votes, date } = articles || {}
@@ -65,11 +65,11 @@ const ArticleDetail: React.FC = () => {
             <Grid container justifyContent="flex-end" pt={2} pr={2} gap={2}>
               <Grid item>
                 <Typography variant="subtitle1" color="text.secondary">
-                  {votes}
+                  {votes} Vote(s)
                 </Typography>
               </Grid>
               <Grid item>
-                <VoteButton loading={false} votes={votes} />
+                <VoteButton id={id} votes={votes} />
               </Grid>
             </Grid>
           </Paper>
