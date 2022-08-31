@@ -9,3 +9,5 @@ export type Article = {
   content: string
   date?: string
 }
+
+export type Fields = 'id' | 'title' | 'content' | 'date'
