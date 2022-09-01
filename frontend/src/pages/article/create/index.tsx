@@ -14,7 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import Layout from '@/layouts/BulletinBoardLayout'
 import { schema } from '@/lib/schema'
-import { Article } from '@/lib/Props'
+import { Article } from '@/lib/Types'
 import FormInput from '@/components/FormInput'
 import { useArticles } from '@/hooks/articles'
 

@@ -12,7 +12,7 @@ import {
 import React, { MouseEventHandler } from 'react'
 
 import { navItems } from './NavItems'
-import { NavItem } from '@/lib/Props'
+import { NavItem } from '@/lib/Types'
 import { APP_NAME } from '@/lib/Constants'
 
 const DRAWER_WIDTH: number = 240

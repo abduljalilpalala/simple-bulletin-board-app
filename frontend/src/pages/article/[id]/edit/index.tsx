@@ -14,7 +14,7 @@ import { NextRouter, useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 import { schema } from '@/lib/schema'
-import { Article } from '@/lib/Props'
+import { Article } from '@/lib/Types'
 import { useFetch } from '@/hooks/fetch'
 import Layout from '@/layouts/BulletinBoardLayout'
 import FormInput from '@/components/FormInput'

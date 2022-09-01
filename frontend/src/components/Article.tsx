@@ -11,7 +11,7 @@ import moment from 'moment'
 import NextLink from 'next/link'
 import { LoadingButton } from '@mui/lab'
 
-import { Article as TArticle } from '@/lib/Props'
+import { Article as TArticle } from '@/lib/Types'
 import { useArticles } from '@/hooks/articles'
 import { MouseEventHandler } from 'react'
 
