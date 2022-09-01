@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 
 import axios from '@/lib/axios'
 import { Toast } from '@/utils/GeneralFunctions'
-import { Article, Fields } from '@/lib/Props'
+import { Article, Fields } from '@/lib/Types'
 
 export const useArticles = () => {
   const navigate = useRouter()

@@ -16,7 +16,7 @@ const Articles: NextPage = () => {
       <Container maxWidth="lg">
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography component="h2" variant="h5">
-            Articles
+            Articles 12346567
           </Typography>
           <NextLink href="article/create">
             <Button variant="contained" size="small">

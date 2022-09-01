@@ -2,7 +2,7 @@ import { Box, Button } from '@mui/material'
 import { useRouter } from 'next/router'
 
 import { navItems } from './NavItems'
-import { NavItem } from '@/lib/Props'
+import { NavItem } from '@/lib/Types'
 
 const NavBarItems: React.FC = () => {
   const navigate = useRouter()
